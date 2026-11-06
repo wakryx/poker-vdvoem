@@ -528,7 +528,7 @@
     const nm = esc(S.players[1].name || 'гостя');
     const canNow = S.phase === 'betting' && S.revealed < 5;
     const opt = (m, t, s) => `<button class="luck-opt${S.luck === m ? ' sel' : ''}" data-m="${m}">${t}<small>${s}</small></button>`;
-    el.innerHTML = `<h3>🍀 Удача для ${nm}</h3><p>Видишь это только ты.</p>
+    el.innerHTML = `<h3>🍀 Удача · ${nm}</h3><p>Видишь это только ты.</p>
       ${opt('off', 'Честная игра', 'Обычная случайная раздача')}
       ${opt('next', 'Следующая раздача — её', 'Сильная рука и победа, один раз')}
       ${opt('always', 'Все раздачи — её', 'Пока не выключишь')}
