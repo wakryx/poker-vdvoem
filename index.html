@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#14060b">
+  <meta name="theme-color" content="#24090f">
   <title>Покер вдвоём</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♥</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,6 +16,10 @@
 
   <!-- ЛОББИ -->
   <section id="screen-lobby" class="screen">
+    <div class="decor lobby-candles" data-decor="candles"></div>
+    <div class="decor lobby-roses" data-decor="roses"></div>
+    <div class="decor lobby-wine" data-decor="wine"></div>
+    <div class="decor petals lobby-petals" data-decor="petals" data-count="9"></div>
     <div class="lobby-card">
       <div class="logo-suits"><span>♠</span><span class="r">♥</span><span class="r">♦</span><span>♣</span></div>
       <h1>Покер <em>вдвоём</em></h1>
@@ -73,6 +77,11 @@
     </header>
 
     <main class="table-area">
+      <div class="decor d-roses" data-decor="roses"></div>
+      <div class="decor d-candles" data-decor="candles"></div>
+      <div class="decor d-wine" data-decor="wine"></div>
+      <div class="decor petals d-petals-1" data-decor="petals" data-count="6"></div>
+      <div class="decor petals d-petals-2" data-decor="petals" data-count="5"></div>
       <div class="table">
         <div class="felt">
           <div class="seat seat-op" id="seat-op">
@@ -116,6 +125,7 @@
   <div id="toast"></div>
 
   <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+  <script src="decor.js"></script>
   <script src="poker.js"></script>
   <script src="app.js"></script>
 </body>

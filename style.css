@@ -360,3 +360,119 @@ input[type=range] { flex: 1; accent-color: var(--gold); height: 28px; }
   .center .emblem { display: none; }
   .result { transform: translate(-50%, calc(var(--cw) * .7 + 18px)); }
 }
+
+/* =====================================================================
+   МАТОВЫЙ РОМАНТИЧНЫЙ СТИЛЬ: без глянца и неона, свечи и цветы
+   ===================================================================== */
+:root {
+  --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --gold: #d6b06a;
+  --red: #b0263b;
+  --muted: #c2ad9c;
+}
+body {
+  background: var(--noise), radial-gradient(ellipse at 50% 40%, #3a121c 0%, #2a0c14 55%, #1c070d 100%);
+}
+.bg-glow {
+  background:
+    radial-gradient(circle at 10% 85%, rgba(240, 180, 100, .10), transparent 30%),
+    radial-gradient(circle at 92% 18%, rgba(240, 180, 100, .06), transparent 28%);
+}
+
+/* кнопки — плоские, матовые */
+.btn { box-shadow: 0 3px 0 rgba(0,0,0,.28), 0 6px 14px rgba(0,0,0,.25); }
+.btn:active { box-shadow: 0 1px 0 rgba(0,0,0,.28); }
+.btn-gold { background: #d4ab5e; color: #3a2208; }
+.btn-red { background: #9c2d40; }
+.btn-green { background: #3d7a5a; }
+.btn-blue { background: #4a6596; }
+.btn-small { background: rgba(255,255,255,.1); }
+
+/* лобби */
+.lobby-card {
+  background: var(--noise), #2c0f17;
+  border: 1px solid rgba(214, 176, 106, .25);
+  backdrop-filter: none;
+  box-shadow: 0 24px 60px rgba(0,0,0,.45);
+  position: relative; z-index: 2;
+}
+.field input, .field select, .link-box input { background: #1f0a10; border-color: rgba(255,255,255,.1); }
+
+/* стол: матовое дерево и сукно */
+.table {
+  background: var(--noise), linear-gradient(160deg, #5b3220 0%, #3f2015 50%, #4d2a1a 100%);
+  box-shadow: 0 30px 70px rgba(0,0,0,.55), inset 0 0 0 1px rgba(0,0,0,.4);
+  z-index: 2;
+}
+.felt {
+  background: var(--noise), radial-gradient(ellipse at center, #2f6e4f 0%, #255b41 55%, #1a4330 100%);
+  box-shadow: inset 0 0 0 2px rgba(214,176,106,.35), inset 0 0 50px rgba(0,0,0,.4);
+}
+.felt::before { border-color: rgba(255,255,255,.06); }
+.emblem { color: rgba(255,255,255,.18); }
+
+/* таблички игроков */
+.plate { background: #2a0e16; border-color: rgba(214,176,106,.28); box-shadow: 0 6px 14px rgba(0,0,0,.4); }
+.seat.active .plate { animation: none; border-color: var(--gold); box-shadow: 0 0 0 2px rgba(214,176,106,.55), 0 6px 14px rgba(0,0,0,.4); }
+.avatar { background: #b2465e; box-shadow: 0 0 0 2px rgba(255,255,255,.15); }
+#me-avatar { background: #4f6a9a; }
+.bubble { background: #f3ebdf; box-shadow: 0 4px 10px rgba(0,0,0,.3); }
+.bubble.hand { background: #d4ab5e; }
+
+/* карты — матовая бумага */
+.card { background: #f5efe3; box-shadow: 0 2px 6px rgba(0,0,0,.35), inset 0 0 0 1px rgba(0,0,0,.07); }
+.card .mid.face { background: rgba(214,176,106,.14); }
+.card.back {
+  background:
+    radial-gradient(circle at 50% 50%, #d6b06a 0 8%, transparent 9%),
+    repeating-linear-gradient(45deg, #87203a 0 5px, #74182f 5px 10px);
+  box-shadow: 0 2px 6px rgba(0,0,0,.35), inset 0 0 0 3px #f5efe3, inset 0 0 0 4px rgba(214,176,106,.6);
+}
+.card.win { box-shadow: 0 0 0 3px var(--gold), 0 4px 10px rgba(0,0,0,.4); }
+.chip { box-shadow: 0 2px 0 rgba(0,0,0,.4); }
+.result-box { background: #2a0e16; border-color: rgba(214,176,106,.45); }
+.over-card { background: var(--noise), #2c0f17; border-color: rgba(214,176,106,.35); }
+#toast { background: #2a0e16; border-color: rgba(214,176,106,.35); }
+.pot { background: rgba(0,0,0,.25); }
+
+/* ---------- декор ---------- */
+.table-area { position: relative; }
+.decor { position: absolute; pointer-events: none; z-index: 3; }
+.decor svg { display: block; width: 100%; height: auto; overflow: visible; }
+.flame { transform-box: fill-box; transform-origin: 50% 100%; animation: flicker 2.2s ease-in-out infinite; }
+.halo { animation: halo 3.2s ease-in-out infinite; }
+.petal { position: absolute; height: auto; opacity: .9; }
+.petals { width: 160px; height: 120px; }
+
+.d-roses   { left: max(4px, calc(50% - 650px)); top: 0; width: clamp(80px, 10vw, 150px); }
+.d-candles { left: max(4px, calc(50% - 640px)); bottom: 4px; width: clamp(76px, 9vw, 135px); }
+.d-wine    { right: max(4px, calc(50% - 640px)); bottom: 4px; width: clamp(66px, 8vw, 120px); }
+.d-petals-1 { right: max(4px, calc(50% - 650px)); top: 6px; }
+.d-petals-2 { left: 50%; bottom: -6px; width: 240px; height: 30px; transform: translateX(-50%); z-index: 1; }
+
+.lobby-candles { left: max(8px, calc(50% - 400px)); bottom: 6vh; width: clamp(90px, 14vw, 160px); }
+.lobby-roses   { right: max(8px, calc(50% - 400px)); bottom: 5vh; width: clamp(100px, 15vw, 180px); }
+.lobby-wine    { right: max(8px, calc(50% - 400px)); top: 8vh; width: clamp(70px, 10vw, 120px); opacity: .9; }
+.lobby-petals  { left: max(8px, calc(50% - 380px)); top: 8vh; width: 200px; height: 160px; }
+
+@keyframes flicker {
+  0%, 100% { transform: scale(1, 1) skewX(0deg); }
+  20% { transform: scale(.95, 1.06) skewX(2deg); }
+  45% { transform: scale(1.04, .95) skewX(-2deg); }
+  70% { transform: scale(.97, 1.03) skewX(1.5deg); }
+}
+@keyframes halo { 50% { opacity: .75; } }
+
+@media (max-width: 700px) {
+  .d-wine, .d-petals-2 { display: none; }
+  .d-roses { left: 2px; top: 2px; width: 17vw; }
+  .d-candles { left: auto; right: 2px; top: 6px; bottom: auto; width: 16vw; }
+  .d-petals-1 { right: auto; left: 4px; top: auto; bottom: 0; width: 120px; height: 60px; }
+  .lobby-wine, .lobby-petals { display: none; }
+  .lobby-card { margin-bottom: 70px; }
+  .lobby-candles { left: 10px; bottom: 12px; width: 90px; }
+  .lobby-roses { right: 10px; bottom: 12px; width: 100px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .flame, .halo { animation: none; }
+}
